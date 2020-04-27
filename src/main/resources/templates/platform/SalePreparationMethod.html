@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>新房源报备</title>
+<link rel="stylesheet" type="text/css" href="css/platform/css.css" />
+<script type="text/javascript" src="js/platform/jquery.min.js"></script>
+</head>
+<body>
+	<div id="pageAll">
+		<div class="pageTop">
+			<div class="page">
+				<img src="img/platform/coin02.png" /><span><a th:href="@{/toMain }">首页</a>&nbsp;-&nbsp;<a th:href="@{/toPlatform}">报备</a>&nbsp;-</span>&nbsp;新房源报备
+			</div>
+		</div>
+		<div class="page ">
+			<!-- 上传广告页面样式 -->
+			<div class="banneradd bor">
+				<div class="baTopNo">
+					<span>新房源报备</span>
+				</div>
+				<form th:action="@{/SalePreparationMethod}" method="post">
+				<div class="baBody">
+				员工ID：<input id="staff_id" th:value="${session.STAFF_SESSION.staff_id}" name="staff_id"></input>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;员工名：
+						<span th:text="${session.STAFF_SESSION.staff_username}"></span>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房源门牌号：
+						<input id="house_name" type="text" name="house_name"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房源所在小区名：
+						<input id="house_estate" type="text" name="house_estate"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房源地址：
+						<input id="house_location" type="text" name="house_location"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房源价格：
+						<input id="house_price" type="text" name="house_price"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房源面积：
+						<input id="house_square" type="text" name="house_square"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;建成时间：
+						<input id="house_complete_time" type="text" name="house_complete_time"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业主名：
+						<input id="house_client_name" type="text" name="house_client_name"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业主性别：
+						<input id="house_client_sex" type="text" name="house_client_sex"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业主地址：
+						<input id="house_client_address" type="text" name="house_client_address"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业主电话：
+						<input id="house_client_phone" type="text" name="house_client_phone"/>
+					</div>
+					
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业主备注：
+						<div class="btext2">
+							<textarea class="text2" name="house_client_remark"></textarea>
+						</div>
+					</div>
+				</div>
+				<input type="submit" value="提交"/>
+		</form>
+			</div>
+
+			<!-- 上传广告页面样式end -->
+		</div>
+	</div>
+</body>
+</html>

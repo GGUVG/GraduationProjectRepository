@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>考勤汇总查询</title>
+<link rel="stylesheet" type="text/css" href="css/platform/css.css" />
+<script type="text/javascript" src="js/platform/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="js/page.js" ></script> -->
+</head>
+
+<body>
+	<div id="pageAll">
+		<div class="pageTop">
+			<div class="page">
+				<img src="img/platform/coin02.png" /><span><a th:href="@{/toMain}">首页</a>&nbsp;-&nbsp;<a th:href="@{/toPlatform }">管理</a>&nbsp;-</span>&nbsp;月考勤
+			</div>
+		</div>
+
+		<div class="page">
+			<!-- balance页面样式 -->
+			<div class="connoisseur">
+				<div class="conform">
+					<form th:action="@{/checkSignSummary }">
+						<div class="cfD">
+						员工ID：<input id="staff_id" th:value="${session.STAFF_SESSION.staff_id}" name="staff_id"></input>
+						年份：<input th:id="year" th:name="year" th:value="${year}"></input>
+							月份<select class="bselect" name="month">
+								<option>01</option>
+								<option>02</option>
+								<option>03</option>
+								<option>04</option>
+								<option>05</option>
+								<option>06</option>
+								<option>07</option>
+								<option>08</option>
+								<option>09</option>
+								<option>10</option>
+								<option>11</option>
+								<option>12</option>
+								</select>
+						</div>
+						<div class="cfD">
+							<input type="submit" value="check"></input>
+						</div>
+					</form>
+				</div>
+				<!-- bbalance 表格 显示 -->
+				<div class="conShow">
+					<table border="1" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="80px" class="tdColor">员工ID</td>
+							<td width="100px" class="tdColor">缺勤天数</td>
+							<td width="100px" class="tdColor">正常天数</td>
+							<td width="100px" class="tdColor">请假天数</td>
+							<td width="100px" class="tdColor">休假天数</td>
+							<td width="100px" class="tdColor">病假天数</td>
+						</tr>
+						<tr  th:each="listStaff_checkSignSummary:${listStaff_checkSignSummary}">
+							<td th:text="${listStaff_checkSignSummary.staff_id}"></td>
+							<td th:text="${listStaff_checkSignSummary.AbsenceFromDuty}"></td>
+							<td th:text="${listStaff_checkSignSummary.Normal}"></td>
+							<td th:text="${listStaff_checkSignSummary.Leave}"></td>
+							<td th:text="${listStaff_checkSignSummary.Vacation}"></td>
+							<td th:text="${listStaff_checkSignSummary.Sick}"></td>	
+							
+						</tr>
+					</table>
+					<div class="paging" th:if="${listStaff_checkSignSummaryPage}" >
+					<a th:href="@{/checkSignSummary(start=0,staff_id=${session.STAFF_SESSION.staff_id})}">[首  页]</a>
+           			<a th:href="@{/checkSignSummary(start=${listStaff_checkSignSummaryPage.pageNum-1},staff_id=${session.STAFF_SESSION.staff_id},year=${year},month=${month})}">[上一页]</a>
+            		<a th:href="@{/checkSignSummary(start=${listStaff_checkSignSummaryPage.pageNum+1},staff_id=${session.STAFF_SESSION.staff_id},year=${year},month=${month})}">[下一页]</a>
+           		    <a th:href="@{/checkSignSummary(start=${listStaff_checkSignSummaryPage.pages},staff_id=${session.STAFF_SESSION.staff_id},year=${year},month=${month})}">[末  页]</a>
+					</div> 
+				</div>
+				<!-- balance 表格 显示 end-->
+			</div>
+			<!-- balance页面样式end -->
+		</div>
+
+	</div>
+
+</body>
+<script>
+$(function(){
+	  $("#year").on('input',function(value){
+		    var regular = /^[0-9]\d*$/;
+		    var length=document.getElementById("year").value.length;
+		    if(regular.test($(this).val()))
+		    {
+		    	if( length < 5)
+		    	{
+		    	$(this).val($(this).val());
+		    	}
+		    	else
+		    		{
+		    		alert("超长");
+		    		}
+		    }
+		    else
+		    {
+		    	alert("输入数字");
+		    }
+		    
+	   })  
+  })
+</script>
+</html>

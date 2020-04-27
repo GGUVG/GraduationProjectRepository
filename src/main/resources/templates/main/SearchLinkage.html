@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>产品信息</title>
+<link href="css/main/Products.css" rel="stylesheet" type="text/css" />
+<link href="css/main/base.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<!--顶部-->
+<div class="top">
+    <b><img src="img/main/logo.jpg" /></b> 
+    <ul>
+        <li>
+              <a th:href="@{/staff_sign_in(staff_id=${session.STAFF_SESSION.staff_id})}">上班卡</a>
+              <div class="line2"></div>
+              <a th:href="@{/staff_sign_off(staff_id=${session.STAFF_SESSION.staff_id})}">下班卡</a>
+              <div class="line2"></div>
+              <a th:href="@{/toask_outside_office }">外勤</a>
+              <div class="line2"></div>
+              <a th:href="@{/logout }">登出</a>    
+          </li>
+       </ul>      
+</div>
+<!--banner-->
+<div class="banner">
+    <img src="img/main/news_bg.jpg" />
+
+</div>
+<!--导航-->
+<div class="nav">
+    <ul>
+        <li>
+           <a th:href="@{/toMain }" class="English"> 首页</a>
+        </li>
+        <li>
+           <a th:href="@{/toPlatform  }" class="English">进入平台</a>
+        </li>
+        <li>
+           <a th:href="@{/showAllCompanyNews }" class="English">公司资讯</a>
+        </li>
+        <li>
+           <a th:href="@{/showAllMarketsNews }" class="English">市场资讯</a>
+        </li>
+        <li>
+           <a th:href="@{/toSearchLinkage }" class="English">一二手联动</a>
+        </li> 
+         <li>
+           <a th:href="@{/toPersonal(staff_id=${session.STAFF_SESSION.staff_id}) }" class="English">个人中心</a>
+        </li>
+    </ul>
+</div>
+<!--当前位置-->
+<div class="Position">
+   <b><img src="img/main/icon4.gif" /></b>
+   <span>首页>></span>
+   <p>一二手联动>></p>
+   <li></li>
+      
+</div>
+
+<!--容器-->
+<div class="Container">
+
+     <div class="Container_left">
+<!--产品信息左-->
+           <div class="Products_left">
+              
+              <img src="img/main/Linkage_bg.jpg" />
+                  
+           </div>
+<!--联络我们左-->
+            <div class="Contact_left">
+               <div class="news_title">     
+                         <b><img src="img/main/icon2.gif" /></b>   
+                         <span>耳边轻语上勾拳</span>       
+                 </div> 
+                 <div class="Contact_text"> 
+                         <p><img src="img/main/MeteorStrike.jpg" /></p>
+                 </div>
+            </div>
+     </div>
+<!--产品信息右-->
+     <div class="Container_right">
+               <div class="Container_title">
+                       <b><img src="img/main/icon.gif" /></b>
+                       <p>一二手联动</p>
+                       <span>Linkage</span>
+                       
+                      
+               </div>
+               
+               <tr th:each="list_EstateLinkage:${list_EstateLinkage}"> 
+                      <p>
+                      <a th:href="@{/showEstateDetails(estate_id=${list_EstateLinkage.estate_id})}">[[${list_EstateLinkage.estate_name}]]</a>
+                      <img th:src="@{'/img/main/estate_bg/'+'/'+${list_EstateLinkage.estate_location_province}+'/'+${list_EstateLinkage.estate_location_city}+'/'+${list_EstateLinkage.estate_location_district}+'/'+${list_EstateLinkage.estate_location_street}+'/'+${list_EstateLinkage.estate_img_bg}}" />
+                      </p></br>  
+                      <th>[[${list_EstateLinkage.estate_location_province}]]-</th>
+                      <th>[[${list_EstateLinkage.estate_location_city}]]-</th>
+                      <th>[[${list_EstateLinkage.estate_location_district}]]-</th>
+                      <th>[[${list_EstateLinkage.estate_location_street}]]</th>
+                      <!-- <th>小区名：[[${list_EstateLinkage.estate_name}+'.jpg']]</th> -->
+               </tr>
+            <a th:href="@{/toSearchLinkage(start=0)}">[首  页]</a>
+            <a th:href="@{/toSearchLinkage(start=${EstateLinkagePage.pageNum-1})}">[上一页]</a>
+            <a th:href="@{/toSearchLinkage(start=${EstateLinkagePage.pageNum+1})}">[下一页]</a>
+            <a th:href="@{/toSearchLinkage(start=${EstateLinkagePage.pages})}">[末  页]</a>   
+     </div>
+
+</div>
+<!--底部--> 
+<div class="clear"></div>
+<div class="bottom">
+   <ul>
+       <li>
+           <a th:href="@{/toMain }" class="English"> 首页</a>
+        </li>
+        <li>
+           <a th:href="@{/toPlatform  }" class="English">进入平台</a>
+        </li>
+        <li>
+           <a th:href="@{/showAllCompanyNews }" class="English">公司资讯</a>
+        </li>
+        <li>
+           <a th:href="@{/showAllMarketsNews }" class="English">市场资讯</a>
+        </li>
+        <li>
+           <a th:href="@{/toSearchLinkage }" class="English">一二手联动</a>
+        </li> 
+         <li>
+           <a th:href="@{/toPersonal(staff_id=${session.STAFF_SESSION.staff_id}) }" class="English">个人中心</a>
+        </li>
+   </ul>
+        <p class="bottom_text">©2016 完平置业有限公司  地址：广州市番禺区洛溪天域网咖  电话：020- 66666666<br />
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>编辑员工</title>
+<link rel="stylesheet" type="text/css" href="css/platform/css.css" />
+<script type="text/javascript" src="js/platform/jquery.min.js"></script>
+</head>
+<body>
+	<div id="pageAll">
+		<div class="pageTop">
+			<div class="page">
+				<img src="img/platform/coin02.png" /><span><a th:href="@{/toMain }">首页</a>&nbsp;-&nbsp;<a
+					th:href="@{/toPlatform }">平台</a>&nbsp;-</span>&nbsp;员工管理
+			</div>
+		</div>
+		<div class="page ">
+			<!-- 会员注册页面样式 -->
+			<div class="banneradd bor">
+				<div class="baTopNo">
+					<span>员工编辑</span>
+				</div>
+				<form th:action="@{/UpdateStaff(branch_staff_id=${staff1.staff_id}) }" method="post" enctype="multipart/form-data">
+				<div class="baBody">
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;员工名：<input type="text" class="input3" name="staff_username1" th:value="${staff1.staff_username}"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;员工职位:<input type="text"
+							class="input3" name="staff_job1" th:value="${staff1.staff_job}"/>
+					</div>
+					<div class="bbD">
+						员工等级：<select name="staff_level1" id="select_1">
+								<option  value = ""></option>
+								<option>1</option>
+								<option>2</option>
+							   </select>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所在分行:<select name="staff_branch_name1" id="staff_branch_name1">
+								<option value="">--分行编号--</option>
+								 <option th:each="list_showBranchName:${list_showBranchName}" th:value="${list_showBranchName.CB_name}" th:text="${list_showBranchName.CB_name}"></option>
+							   </select>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;员工头像(200*200)：
+						<img th:src="@{/img/staff_img/{staff_img}(staff_img=${staff1.staff_img})}"/>
+						<input id="staff_img1" type="file" name="staff_img1"/>
+					</div>
+					<div class="bbD">
+						<p class="bbDP">
+							<input type="submit" value="提交"/>
+						</p>
+					</div>
+				</div>
+				</form>
+			</div>
+
+			<!-- 会员注册页面样式end -->
+		</div>
+	</div>
+</body>
+</html>

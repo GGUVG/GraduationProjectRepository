@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>房源信息</title>
+<link rel="stylesheet" type="text/css" href="css/platform/css.css" />
+<script type="text/javascript" src="js/platform/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="js/page.js" ></script> -->
+</head>
+<body>
+	<div id="pageAll">
+		<div class="pageTop">
+			<div class="page">
+				<img src="img/platform/coin02.png" />
+				<span><a href="#">后台管理</a>&nbsp;-&nbsp;-</span>&nbsp;房源详细信息
+			</div>
+		</div>
+		<div class="page">
+			<!-- 页面样式 -->
+			<div class="connoisseur">
+				<div class="conform">
+					<form>
+						<div class="cfD">
+							
+						</div>
+					</form>
+				</div>
+				<!--表格 显示 -->
+				<div class="conShow">
+					<table border="1" cellspacing="0" cellpadding="0">
+					
+						<tr>
+							<td width="66px" class="tdColor tdC">房源ID</td>
+							<td width="100px" class="tdColor">门牌号</td>
+							<td width="200px" class="tdColor">小区</td>
+							<td width="300px" class="tdColor">位置</td>
+							<td width="100px" class="tdColor">价格/平</td>
+							<td width="100px" class="tdColor">面积/平</td>
+							<td width="100px" class="tdColor">房源状态</td>
+							<td width="100px" class="tdColor">业主ID</td>
+							<td width="66px" class="tdColor">建成时间</td>
+							<td width="66px" class="tdColor">交易时间</td>
+							<td width="66px" class="tdColor">买家ID</td>
+						</tr>
+						<tr  th:each="house_lease:${house_lease}" height="40px">
+							<td th:text="${house_lease.House_lid}"></td>
+							<td th:text="${house_lease.House_lname}"></td>
+							<td th:text="${house_lease.House_lestate}"></td>
+							<td th:text="${house_lease.House_llocation}"></td>
+							<td th:text="${house_lease.House_lprice}"></td>
+							<td th:text="${house_lease.House_lsquare}"></td>
+							<td th:switch="${house_lease.House_lstate}"><p th:case="'0'">未售</p><p th:case="'1'">已售</p></td>
+							<!--<td th:text="${house_lease.House_sstate}"></td>  -->
+							<td th:text="${house_lease.House_lclientid}"></td>
+							<td th:text="${house_lease.Complete_time}"></td>
+							<td th:text="${house_lease.deal_time}"></td>
+							<td th:text="${house_lease.House_lpurchase_id}"></td>
+						</tr>
+					</table>
+					<div class="paging"></div>
+				</div>
+				<!-- 表格 显示 end-->
+			</div>
+			<!-- 页面样式end -->
+		</div>
+
+	</div>
+	<!-- 删除弹出框 -->
+	<div class="banDel">
+		<div class="delete">
+			<div class="close">
+				<a><img src="img/platform/shanchu.png" /></a>
+			</div>
+			<p class="delP1">你确定要删除此条记录吗?</p>
+			<p class="delP2">
+				<a href="#" class="ok yes">确定</a><a class="ok no">取消</a>
+			</p>
+		</div>
+	</div>
+	<!-- 删除弹出框  end-->
+</body>
+<script type="text/javascript">
+// 广告弹出框
+$(".delban").click(function(){
+  $(".banDel").show();
+});
+$(".close").click(function(){
+  $(".banDel").hide();
+});
+$(".no").click(function(){
+  $(".banDel").hide();
+});
+// 广告弹出框 end
+</script>
+</html>

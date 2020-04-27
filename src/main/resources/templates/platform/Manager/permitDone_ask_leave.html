@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>员工已审批请假列表</title>
+<link rel="stylesheet" type="text/css" href="css/platform/css.css" />
+<script type="text/javascript" src="js/platform/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="js/page.js" ></script> -->
+</head>
+
+<body>
+	<div id="pageAll">
+		<div class="pageTop">
+			<div class="page">
+				<img src="img/platform/coin02.png" /><span><a th:href="@{/toMain }">首页</a>&nbsp;-&nbsp;<a th:href="@{/toPlatform }">请假申请</a>&nbsp;-</span>&nbsp;已审批请假申请
+			</div>
+		</div>
+
+		<div class="page">
+			<!-- banner页面样式 -->
+			<div class="connoisseur">
+				<div class="conform">
+					<form >
+						<div class="cfD">
+							
+						</div>
+						<div class="cfD">
+							<!-- <input class="addUser" type="text" placeholder="" name="" /> -->
+							当前登录员工ID：<span th:text="${session.STAFF_SESSION.staff_id}"></span>
+						</div>
+					</form>
+				</div>
+				<!-- banner 表格 显示 -->
+				<div class="conShow">
+					<table border="1" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="50px" class="tdColor tdC">流水号</td>
+							<td width="50px" class="tdColor">员工ID</td>
+							<td width="50px" class="tdColor">起始时间</td>
+							<td width="88px" class="tdColor">结束时间</td>
+							<td width="100px" class="tdColor">原因</td>
+							<td width="50px" class="tdColor">照片</td>
+							<td width="200px" class="tdColor">状态</td>
+						</tr>
+						<tr th:each="list_permitDoneAskLeave:${list_permitDoneAskLeave}">
+							<td th:text="${list_permitDoneAskLeave.id}"></td>
+							<td th:text="${list_permitDoneAskLeave.staff_id}"></td>
+							<td th:text="${list_permitDoneAskLeave.leave_time}"></td>
+							<td th:text="${list_permitDoneAskLeave.back_time}"></td>
+							<td th:text="${list_permitDoneAskLeave.reason}"></td>
+						    <td><a th:href="@{/show_img_prove(id=${list_permitDoneAskLeave.id})}" th:text="查看" target="_blank"></a></td>
+							<td th:switch="${list_permitDoneAskLeave.state}"><p th:case="'0'">待审批</p><p th:case="'1'">已审批</p><p th:case="'-1'">退回</p></td>
+							   
+							<td> 
+							<a th:href="@{/}"><img class="operation delban" src="img/platform/delete.png"></a></td>
+							
+						</tr>
+					</table>
+					<div class="paging">此处是分页</div>
+				</div>
+				<!-- banner 表格 显示 end-->
+			</div>
+			<!-- banner页面样式end -->
+		</div>
+
+	</div>
+
+
+	<!-- 删除弹出框 -->
+	<div class="banDel">
+		<div class="delete">
+			<div class="close">
+				<a><img src="img/shanchu.png" /></a>
+			</div>
+			<p class="delP1">你确定要删除此条记录吗？</p>
+			<p class="delP2">
+				<a href="#" class="ok yes">确定</a><a class="ok no">取消</a>
+			</p>
+		</div>
+	</div>
+	<!-- 删除弹出框  end-->
+</body>
+
+<script type="text/javascript">
+// 广告弹出框
+$(".delban").click(function(){
+  $(".banDel").show();
+});
+$(".close").click(function(){
+  $(".banDel").hide();
+});
+$(".no").click(function(){
+  $(".banDel").hide();
+});
+// 广告弹出框 end
+</script>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的分行</title>
+<link rel="stylesheet" type="text/css" href="css/platform/css.css" />
+<script type="text/javascript" src="js/platform//jquery.min.js"></script>
+<!-- <script type="text/javascript" src="js/page.js" ></script> -->
+</head>
+
+<body>
+	<div id="pageAll">
+		<div class="pageTop">
+			<div class="page">
+				<img src="img/platform/coin02.png" /><span><a th:href="@{/toMain}">首页</a>&nbsp;-&nbsp;-</span>&nbsp;我的分行马仔
+			</div>
+		</div>
+
+		<div class="page">
+			<!-- user页面样式 -->
+			<div class="connoisseur">
+				<div class="conform">
+				</div>
+				<!-- user 表格 显示 -->
+				<div class="conShow">
+					<table border="1" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="130px" class="tdColor">员工头像</td>
+							<td width="66px" class="tdColor tdC">员工工号</td>
+							<td width="150px" class="tdColor">员工姓名</td>
+							<td width="300px" class="tdColor">员工职位</td>
+							<td width="50px" class="tdColor">出勤详情</td>
+							<td width="50px" class="tdColor">卷铺滚蛋</td>
+							<<td width="50px" class="tdColor">编辑</td>>
+						</tr>
+						<tr th:each="list_allBranchStaff:${list_allBranchStaff}",height="40px">
+							<td><img th:src="@{/img/staff_img/{staff_img}(staff_img=${list_allBranchStaff.staff_img})}"/></td>
+							<td>[[${list_allBranchStaff.staff_id}]]</a></td>
+							<td>[[${list_allBranchStaff.staff_username}]]</td>
+							<td>[[${list_allBranchStaff.staff_job}]]</td>
+							<td><a th:href="@{/BranchStaffSign_Detail(branch_staff_id=${list_allBranchStaff.staff_id})}"><img class="operation" src="img/platform/update.png"></a></td>
+							<td><a th:href="@{/delStaff(branch_staff_id=${list_allBranchStaff.staff_id})}"><img class="operation" src="img/platform/delete.png"></a></td>
+							<td><a th:href="@{/toEditStaff(staff_branch_id=${list_allBranchStaff.staff_id})}"><img class="operation" src="img/platform/edit.png"></a></td>
+						</tr>
+					</table>
+					<div class="paging">
+					<a th:href="@{/checkBranchAllStaff(start=0)}">[首  页]</a>
+            		<a th:href="@{/checkBranchAllStaff(start=${Page_allBranchStaff.pageNum-1})}">[上一页]</a>
+            		<a th:href="@{/checkBranchAllStaff(start=${Page_allBranchStaff.pageNum+1})}">[下一页]</a>
+            		<a th:href="@{/checkBranchAllStaff(start=${Page_allBranchStaff.pages})}">[末  页]</a> 
+					</div>
+				</div>
+				<!-- user 表格 显示 end-->
+			</div>
+			<!-- user页面样式end -->
+		</div>
+
+	</div>
+
+
+	<!-- 删除弹出框 -->
+	<div class="banDel">
+		<div class="delete">
+			<div class="close">
+				<a><img src="img/shanchu.png" /></a>
+			</div>
+			<p class="delP1">你确定要删除此条记录吗？</p>
+			<p class="delP2">
+				<a href="#" class="ok yes">确定</a><a class="ok no">取消</a>
+			</p>
+		</div>
+	</div>
+	<!-- 删除弹出框  end-->
+</body>
+
+<script type="text/javascript">
+// 广告弹出框
+$(".delban").click(function(){
+  $(".banDel").show();
+});
+$(".close").click(function(){
+  $(".banDel").hide();
+});
+$(".no").click(function(){
+  $(".banDel").hide();
+});
+// 广告弹出框 end
+</script>
+</html>

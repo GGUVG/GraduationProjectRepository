@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>新租赁交易完成报备</title>
+<link rel="stylesheet" type="text/css" href="css/platform/css.css" />
+<script type="text/javascript" src="js/platform/jquery.min.js"></script>
+</head>
+<body>
+	<div id="pageAll">
+		<div class="pageTop">
+			<div class="page">
+				<img src="img/platform/coin02.png" /><span><a th:href="@{/toPlatform }">首页</a>&nbsp;-&nbsp;<a th:href="@{/toDeal_RentPreparation}">报备</a>&nbsp;-</span>&nbsp;新租赁交易完成报备
+			</div>
+		</div>
+		<div class="page ">
+			<!-- 上传广告页面样式 -->
+			<div class="banneradd bor">
+				<div class="baTopNo">
+					<span>提交信息</span>
+				</div>
+				<form th:action="@{/Deal_toRentPreparation}" method="post" enctype="multipart/form-data">
+				<div class="baBody">
+				员工ID：<input id="staff_id" th:value="${session.STAFF_SESSION.staff_id}" name="staff_id"></input>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;员工名：
+						<span th:text="${session.STAFF_SESSION.staff_username}"></span>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;已登记的房源ID：
+						<input id="house_id" type="text" name="house_id"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实际成交价格：
+						<input id="deal_price" type="text" name="deal_price"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;租客姓名：
+						<input id="purchaser_name" type="text" name="purchaser_name"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;租客性别：
+						<input id="purchaser_sex" type="text" name="purchaser_sex"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;租客地址：
+						<input id="purchaser_address" type="text" name="purchaser_address"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;租客电话：
+						<input id="purchaser_phone" type="text" name="purchaser_phone"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;租客备注：
+						<input id="purchaser_remark" type="text" name="purchaser_remark"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;租期到期时间：
+						<input id="tenancy" type="text" name="tenancy"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;租赁合同协议：
+						<input id="agreement_img1" type="file" name="agreement_img1"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交接时电表记录：
+						<input id="ammeter_record_img1" type="file" name="ammeter_record_img1"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;家具清单：
+						<input id="furniture_record_img1" type="file" name="furniture_record_img1"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房东身份证复印件：
+						<input id="landlordIDcard_copy_img1" type="file" name="landlordIDcard_copy_img1"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;房产证复印件：
+						<input id="property_copy_img1" type="file" name="property_copy_img1"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;租客身份证复印件：
+						<input id="purchaserIDcard_copy_img1" type="file" name="purchaserIDcard_copy_img1"/>
+					</div>
+				</div>
+				<input type="submit" value="提交"/>
+		</form>
+			</div>
+
+			<!-- 上传广告页面样式end -->
+		</div>
+	</div>
+</body>
+</html>

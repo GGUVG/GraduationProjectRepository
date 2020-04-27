@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>查询已审批新待租房源</title>
+<link rel="stylesheet" type="text/css" href="css/platform/css.css" />
+<script type="text/javascript" src="js/platform/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="js/page.js" ></script> -->
+</head>
+
+<body>
+	<div id="pageAll">
+		<div class="pageTop">
+			<div class="page">
+				<img src="img/platform/coin02.png" /><span><a th:href="@{/toMain }">首页</a>&nbsp;-&nbsp;<a th:href="@{/toPlatform}">后台管理</a>&nbsp;-</span>&nbsp;查询已审批新待租房源
+			</div>
+		</div>
+
+		<div class="page">
+			<!-- banner页面样式 -->
+			<div class="connoisseur">
+				<div class="conform">
+					<form>
+						<div class="cfD">
+							
+						</div>
+						<div class="cfD">
+							
+							<a th:href="@{/permitNewLeaseDone(staff_id=${session.STAFF_SESSION.staff_id})}">历史已审批</a>
+						</div>
+					</form>
+				</div>
+				<!-- banner 表格 显示 -->
+				<div class="conShow">
+					<table border="1" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="50px" class="tdColor tdC">流水号</td>
+							<td width="50px" class="tdColor">员工ID</td>
+							<td width="100px" class="tdColor">门牌号</td>
+							<td width="100px" class="tdColor">房源小区</td>
+							<td width="200px" class="tdColor">房源地址</td>
+							<td width="80px" class="tdColor">价格/月</td>
+							<td width="80px" class="tdColor">面积/平</td>
+							<td width="80px" class="tdColor">建成时间</td>
+							<td width="100px" class="tdColor">业主名</td>
+							<td width="50px" class="tdColor">业主性别</td>
+							<td width="200px" class="tdColor">业主地址</td>
+							<td width="100px" class="tdColor">业主电话</td>
+							<td width="200px" class="tdColor">业主备注</td>
+							<td width="100px" class="tdColor">状态</td>
+							<td width="100px" class="tdColor">审批时间</td>
+						</tr>
+						<tr th:each="list_permitNewLeaseDone:${list_permitNewLeaseDone}">
+							<td th:text="${list_permitNewLeaseDone.id}"></td>
+							<td th:text="${list_permitNewLeaseDone.staff_id}"></td>
+							<td th:text="${list_permitNewLeaseDone.house_name}"></td>
+							<td th:text="${list_permitNewLeaseDone.house_estate}"></td>
+							<td th:text="${list_permitNewLeaseDone.house_location}"></td>
+							<td th:text="${list_permitNewLeaseDone.house_price}"></td>
+							<td th:text="${list_permitNewLeaseDone.house_square}"></td>
+							<td th:text="${list_permitNewLeaseDone.house_complete_time}"></td>
+							<td th:text="${list_permitNewLeaseDone.house_client_name}"></td>
+							<td th:text="${list_permitNewLeaseDone.house_client_sex}"></td>
+							<td th:text="${list_permitNewLeaseDone.house_client_address}"></td>
+							<td th:text="${list_permitNewLeaseDone.house_client_phone}"></td>
+							<td th:text="${list_permitNewLeaseDone.house_client_remark}"></td>
+							<td th:switch="${list_permitNewLeaseDone.state}"><p th:case="'0'">待审批</p><p th:case="'1'">已审批</p><p th:case="'-1'">退回</p></td>
+							<td th:text="${list_permitNewLeaseDone.permit_time}"></td>   
+						
+							
+						</tr>
+					</table>
+					<div class="paging">
+					<a th:href="@{/permitNewLeaseDone(start=0,staff_id=${session.STAFF_SESSION.staff_id})}">[首  页]</a>
+           		    <a th:href="@{/permitNewLeaseDone(start=${list_permitNewLeaseDonePage.pageNum-1},staff_id=${session.STAFF_SESSION.staff_id})}">[上一页]</a>
+                    <a th:href="@{/permitNewLeaseDone(start=${list_permitNewLeaseDonePage.pageNum+1},staff_id=${session.STAFF_SESSION.staff_id})}">[下一页]</a>
+                    <a th:href="@{/permitNewLeaseDone(start=${list_permitNewLeaseDonePage.pages},staff_id=${session.STAFF_SESSION.staff_id})}">[末  页]</a>
+					</div>
+				</div>
+				<!-- banner 表格 显示 end-->
+			</div>
+			<!-- banner页面样式end -->
+		</div>
+
+	</div>
+
+
+	<!-- 删除弹出框 -->
+	<div class="banDel">
+		<div class="delete">
+			<div class="close">
+				<a><img src="img/shanchu.png" /></a>
+			</div>
+			<p class="delP1">你确定要删除此条记录吗？</p>
+			<p class="delP2">
+				<a href="#" class="ok yes">确定</a><a class="ok no">取消</a>
+			</p>
+		</div>
+	</div>
+	<!-- 删除弹出框  end-->
+</body>
+
+<script type="text/javascript">
+// 广告弹出框
+$(".delban").click(function(){
+  $(".banDel").show();
+});
+$(".close").click(function(){
+  $(".banDel").hide();
+});
+$(".no").click(function(){
+  $(".banDel").hide();
+});
+// 广告弹出框 end
+</script>
+</html>

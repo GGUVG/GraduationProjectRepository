@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>考勤查询</title>
+<link rel="stylesheet" type="text/css" href="css/platform/css.css" />
+<script type="text/javascript" src="js/platform/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="js/page.js" ></script> -->
+</head>
+
+<body>
+	<div id="pageAll">
+		<div class="pageTop">
+			<div class="page">
+				<img src="img/platform/coin02.png" /><span><a th:href="@{/toMain}">首页</a>&nbsp;-&nbsp;<a th:href="@{/toPlatform }">管理</a>&nbsp;-</span>&nbsp;月考勤
+			</div>
+		</div>
+
+		<div class="page">
+			<!-- balance页面样式 -->
+			<div class="connoisseur">
+				<div class="conform">
+					<form th:action="@{/checkMonthSign }">
+						<div class="cfD">
+						员工ID：<input id="staff_id" th:value="${session.STAFF_SESSION.staff_id}" name="staff_id" readonly="readonly"></input>
+						年份：<input th:id="year" th:name="year"  th:value="${year}" ></input>
+							月份<select id="bselect" class="bselect" name="month"  th:value="${month}">
+								<option>01</option>
+								<option>02</option>
+								<option>03</option>
+								<option>04</option>
+								<option>05</option>
+								<option>06</option>
+								<option>07</option>
+								<option>08</option>
+								<option>09</option>
+								<option>10</option>
+								<option>11</option>
+								<option>12</option>
+								</select>
+						</div>
+						<div class="cfD">
+							<input type="submit" value="check"></input>
+						</div>
+					</form>
+				</div>
+				<!-- bbalance 表格 显示 -->
+				<div class="conShow">
+					<table border="1" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="40px" class="tdColor tdC">流水</td>
+							<td width="80px" class="tdColor">员工ID</td>
+							<td width="100px" class="tdColor">上班时间</td>
+							<td width="100px" class="tdColor">下班时间</td>
+							<td width="100px" class="tdColor">上班状态</td>
+							<td width="100px" class="tdColor">下班状态</td>
+							<td width="150px" class="tdColor">特殊</td>
+							<td width="80px" class="tdColor">当日考勤</td>
+						</tr>
+						<tr  th:each="listStaff_sign:${listStaff_sign}">
+							<td th:text="${listStaff_sign.id}"></td>
+							<td th:text="${listStaff_sign.staff_id}"></td>
+							<td th:text="${listStaff_sign.in_time}"></td>
+							<td th:text="${listStaff_sign.off_time}"></td>
+							<td th:text="${listStaff_sign.in_state}"></td>
+							<td th:text="${listStaff_sign.off_state}"></td>
+							<td th:switch="${listStaff_sign.special_state}"><p th:case="'0'">无</p><p th:case="'1'">外勤</p><p th:case="'2'">请假</p><p th:case="'3'">休假</p></td>
+							<td th:switch="${listStaff_sign.final_state}"><p th:case="'0'">缺</p><p th:case="'1'">正常</p></td>	
+						</tr>
+					</table> 
+					<div class="paging" th:if="${listStaff_signPage}" >
+					<a th:href="@{/checkMonthSign(start=0,staff_id=${session.STAFF_SESSION.staff_id})}">[首  页]</a>
+           			<a th:href="@{/checkMonthSign(start=${listStaff_signPage.pageNum-1},staff_id=${session.STAFF_SESSION.staff_id},year=${year},month=${month})}">[上一页]</a>
+            		<a th:href="@{/checkMonthSign(start=${listStaff_signPage.pageNum+1},staff_id=${session.STAFF_SESSION.staff_id},year=${year},month=${month})}">[下一页]</a>
+           		    <a th:href="@{/checkMonthSign(start=${listStaff_signPage.pages},staff_id=${session.STAFF_SESSION.staff_id},year=${year},month=${month})}">[末  页]</a>
+					</div>  
+				</div>
+			</div>
+			<!-- balance页面样式end -->
+		</div>
+	</div>
+</body>
+<script>
+   $(function(){
+	  $("#year").on('input',function(value){
+		    console.log("实时监听:"+$(this).val());
+		    var regular = /^[0-9]\d*$/;
+		    var length=document.getElementById("year").value.length;
+		    if(regular.test($(this).val()))
+		    {
+		    	console.log("输入长度:"+length);
+		    	if( length < 5)
+		    	{
+		    	$(this).val($(this).val());
+		    	}
+		    	else
+		    		{
+		    		alert("超长");
+		    		}
+		    }
+		    else
+		    {
+		    	alert("输入数字");
+		    }
+		    
+	   })  
+    })
+ </script>
+</html>

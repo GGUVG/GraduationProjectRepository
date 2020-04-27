@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>月工资</title>
+<link rel="stylesheet" type="text/css" href="css/platform/css.css" />
+<script type="text/javascript" src="js/platform/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="js/page.js" ></script> -->
+</head>
+
+<body>
+	<div id="pageAll">
+		<div class="pageTop">
+			<div class="page">
+				<img src="img/platform/coin02.png" /><span><a th:href="@{/toMain}">首页</a>&nbsp;-&nbsp;<a th:href="@{/toPlatform }">管理</a>&nbsp;-</span>&nbsp;月查询卖房成交宗数
+			</div>
+		</div>
+
+		<div class="page">
+			<!-- balance页面样式 -->
+			<div class="connoisseur">
+				<div class="conform">
+					<form th:action="@{/checkSalary_Month }">
+						<div class="cfD">
+						员工ID：<input id="staff_id" th:value="${session.STAFF_SESSION.staff_id}" name="staff_id" readonly="readonly"></input>
+						年份：<input th:id="year" th:name="year"  th:value="${year}"></input>
+							月份<select class="bselect" name="month">
+								<option>01</option>
+								<option>02</option>
+								<option>03</option>
+								<option>04</option>
+								<option>05</option>
+								<option>06</option>
+								<option>07</option>
+								<option>08</option>
+								<option>09</option>
+								<option>10</option>
+								<option>11</option>
+								<option>12</option>
+								</select>
+						</div>
+						<div class="cfD">
+							<input type="submit" value="check"></input>
+						</div>
+					</form>
+				</div>
+				<!-- bbalance 表格 显示 -->
+				<div class="conShow">
+					<table border="1" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="40px" class="tdColor tdC">员工ID</td>
+							<td width="80px" class="tdColor">职位</td>
+							<td width="80px" class="tdColor">底薪/月</td>
+							<td width="80px" class="tdColor">全勤奖/月</td>
+							<td width="80px" class="tdColor">缺勤、请假扣减/次</td>
+							<td width="80px" class="tdColor">缺勤、请假/天</td>
+							<td width="80px" class="tdColor">正常出勤/天</td>
+							<td width="80px" class="tdColor">请假/天</td>
+							<td width="80px" class="tdColor">休假/天</td>
+							<td width="80px" class="tdColor">病假/天</td>
+							<td width="80px" class="tdColor">扣除总额</td>
+							<td width="80px" class="tdColor">房屋交易佣金总额</td>
+							<td width="80px" class="tdColor">租赁交易佣金总额</td>
+							<td width="100px" class="tdColor">该月佣金总额</td>
+							<td width="100px" class="tdColor">实发工资</td>
+						</tr>
+						<tr  th:each="list_checkSalaryMonth1:${list_checkSalaryMonth1}">
+							<td th:text="${list_checkSalaryMonth1.staff_id}"></td>
+							<td th:text="${list_checkSalaryMonth1.salary_job}"></td>
+							<td th:text="${list_checkSalaryMonth1.salary_base}"></td>
+							<td th:text="${list_checkSalaryMonth1.salary_bonus}"></td>
+							<td th:text="${list_checkSalaryMonth1.salary_leave}"></td>
+							<td th:text="${list_checkSalaryMonth1.AbsenceFromDuty}"></td>
+							<td th:text="${list_checkSalaryMonth1.Normal}"></td>
+							<td th:switch="${list_checkSalaryMonth1.Leave}"><p th:case="${list_checkSalaryMonth1.Leave}">[[${list_checkSalaryMonth1.Leave}]]</p><p th:case="0">0</p><p th:case=null>0</p></td>
+							<td th:switch="${list_checkSalaryMonth1.Vacation}"><p th:case="${list_checkSalaryMonth1.Vacation}">[[${list_checkSalaryMonth1.Vacation}]]</p><p th:case="0">0</p><p th:case=null>0</p></td>
+							<td th:switch="${list_checkSalaryMonth1.Sick}"><p th:case="${list_checkSalaryMonth1.Sick}">[[${list_checkSalaryMonth1.Sick}]]</p><p th:case="0">0</p><p th:case=null>0</p></td>
+							<td th:text="${list_checkSalaryMonth1.AbsenceFromDuty*list_checkSalaryMonth1.salary_leave+list_checkSalaryMonth1.Leave*list_checkSalaryMonth1.salary_leave}"></td>
+							<td th:text="${earnSale}"></td>
+							<td th:text="${rentSale}"></td>
+							<td th:text="${earnSale+rentSale}"></td>
+							<td th:text="${list_checkSalaryMonth1.total+earnSale+rentSale}"></td>
+						</tr>
+					</table>
+					<div class="paging" th:if="${list_checkSalaryMonthPage}" >
+					<a th:href="@{/checkSalary_Month(start=0,staff_id=${session.STAFF_SESSION.staff_id})}">[首  页]</a>
+           			<a th:href="@{/checkSalary_Month(start=${list_checkSalaryMonthPage.pageNum-1},staff_id=${session.STAFF_SESSION.staff_id},year=${year},month=${month})}">[上一页]</a>
+            		<a th:href="@{/checkSalary_Month(start=${list_checkSalaryMonthPage.pageNum+1},staff_id=${session.STAFF_SESSION.staff_id},year=${year},month=${month})}">[下一页]</a>
+           		    <a th:href="@{/checkSalary_Month(start=${list_checkSalaryMonthPage.pages},staff_id=${session.STAFF_SESSION.staff_id},year=${year},month=${month})}">[末  页]</a>
+					</div> 
+				</div>
+				<!-- balance 表格 显示 end-->
+			</div>
+			<!-- balance页面样式end -->
+		</div>
+	</div>
+</body>
+<script>
+   $(function(){
+	  $("#year").on('input',function(value){
+		    console.log("实时监听:"+$(this).val());
+		    var regular = /^[0-9]\d*$/;
+		    var length=document.getElementById("year").value.length;
+		    if(regular.test($(this).val()))
+		    {
+		    	console.log("输入长度:"+length);
+		    	if( length < 5)
+		    	{
+		    	$(this).val($(this).val());
+		    	}
+		    	else
+		    		{
+		    		alert("超长");
+		    		}
+		    }
+		    else
+		    {
+		    	alert("输入数字");
+		    }
+		    
+	   })  
+    })
+ </script>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>内网平台</title>
+<link rel="stylesheet" type="text/css" href="css/platform/public.css" />
+<script type="text/javascript" src="js/platform/jquery.min.js"></script>
+<script type="text/javascript" src="js/platform/public.js"></script>
+<head></head>
+
+<body id="bg">
+	<!-- 左边节点 -->
+	<div class="container">
+
+		<div class="leftsidebar_box">
+			<a th:href="@{/toMain }" target="main"><div class="line">
+					<img src="img/platform/coin01.png" />&nbsp;&nbsp;首页
+				</div></a>
+			<dl class="system_log">
+				<dt>
+					<img class="icon1" src="img/platform/coin03.png" /><img class="icon2"
+						src="img/platform/coin04.png" /> 综合业务<img class="icon3"
+						src="img/platform/coin19.png" /><img class="icon4"
+						src="img/platform/coin20.png" />
+				</dt>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					
+					<a th:href="@{/CheckHouesMsgsale(client_sstaffid=${session.STAFF_SESSION.staff_id}) }" class="cks" target="main">查看待售房源消息</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a th:href="@{/CheckHouesMsglease(client_lstaffid=${session.STAFF_SESSION.staff_id}) }" class="cks" target="main">查看待租赁房源消息</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a th:href="@{/CheckHouseMsgSuccessSale(client_sstaffid=${session.STAFF_SESSION.staff_id}) }" class="cks" target="main">历史成交售房记录</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a th:href="@{/CheckHouseMsgSuccessLease(client_lstaffid=${session.STAFF_SESSION.staff_id}) }" class="cks" target="main">历史成交租赁记录</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a th:href="@{/toSalePreparationMethod }" class="cks" target="main">报备新房源</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a th:href="@{/toRentPreparationMethod }" class="cks" target="main">报备新租源</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a th:href="@{/permitNewHouse(staff_id=${session.STAFF_SESSION.staff_id}) }" class="cks" target="main">当前新房报备审批流程</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a th:href="@{/permitNewLease(staff_id=${session.STAFF_SESSION.staff_id}) }" class="cks" target="main">当前放租报备审批流程</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a th:href="@{/toDeal_salepreparation }" class="cks" target="main">买房交易完成报备</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a th:href="@{/toDeal_RentPreparation }" class="cks" target="main">租赁交易完成报备</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a th:href="@{/Digital_HouseSale(staff_id=${session.STAFF_SESSION.staff_id}) }" class="cks" target="main">电子客簿-卖房</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a th:href="@{/Digital_HouseLease(staff_id=${session.STAFF_SESSION.staff_id}) }" class="cks" target="main">电子客簿-放租</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a th:href="@{/Digital_WantBuy(staff_id=${session.STAFF_SESSION.staff_id}) }" class="cks" target="main">电子客簿-买房</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a th:href="@{/Digital_WantRent(staff_id=${session.STAFF_SESSION.staff_id}) }" class="cks" target="main">电子客簿-租房</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a th:href="@{/digOrphan_buy }" class="cks" target="main">淘客-意向买房</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a th:href="@{/digOrphan_rent }" class="cks" target="main">淘客-意向租房</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<!-- 
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a th:href="@{/toSchedule }" class="cks" target="main">日程安排</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				 -->
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a th:href="@{/toWebChat }" class="cks" target="_blank">消息发送</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+			</dl>
+			<dl class="system_log">
+				<dt>
+					<img class="icon1" src="img/platform/coin05.png" /><img class="icon2"
+						src="img/platform/coin06.png" /> 工资考勤<img class="icon3"
+						src="img/platform/coin19.png" /><img class="icon4"
+						src="img/platform/coin20.png" />
+				</dt>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a class="cks" th:href="@{/tocheckMonthSign }" target="main">出勤记录</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a class="cks" th:href="@{/tocheckSignSummary }" target="main">出勤汇总</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a class="cks" th:href="@{/tocheckSale_monthSalary }" target="main">绩效/佣金</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a class="cks" th:href="@{/toask_leave }" target="main">请假</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a class="cks" th:href="@{/tocheckSalary_Month }" target="main">月工资查询</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+			</dl>
+			<dl class="system_log">
+				<dt>
+					<img class="icon1" src="img/platform/coin07.png" /><img class="icon2"
+						src="img/platform/coin08.png" /> 管理员<img class="icon3"
+						src="img/platform/coin19.png" /><img class="icon4"
+						src="img/platform/coin20.png" />
+				</dt>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a class="cks" th:href="@{/toaddStaff(staff_id=${session.STAFF_SESSION.staff_id}) }" target="main">增加员工</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a class="cks" th:href="@{/checkBranchAllStaff(staff_id=${session.STAFF_SESSION.staff_id}) }" target="main">我的分行</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				
+				
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+					<a class="cks" th:href="@{/toWebChat }" target="main">消息发送</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+						<a th:href="@{/toPermitSalePreparationMethod(staff_id=${session.STAFF_SESSION.staff_id})}" target="main" class="cks">审批新待售房源</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+						<a th:href="@{/toPermitRentPreparationMethod(staff_id=${session.STAFF_SESSION.staff_id})}" target="main" class="cks">审批新待租房源</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+						<a th:href="@{/Check_DealSalePreparation(staff_id=${session.STAFF_SESSION.staff_id})}" target="main" class="cks">审批成交售房</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+						<a th:href="@{/Check_DealRentPreparation(staff_id=${session.STAFF_SESSION.staff_id})}" target="main" class="cks">审批成交租赁</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+						<a th:href="@{/check_permit_ask_leave(staff_id=${session.STAFF_SESSION.staff_id})}" target="main" class="cks">审批请假</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+						<a th:href="@{/check_permit_ask_out_office(staff_id=${session.STAFF_SESSION.staff_id})}" target="main" class="cks">审批外勤</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+						<a th:onclick="'checkManager()'" th:href="@{/insert_not_in_staff_sign }" target="main" class="cks">手动更新今日缺勤</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+						<a th:href="@{/Update_staff_sign_SaturdaySunday }" target="main" class="cks">手动更新周末休假考勤</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+						<a th:href="@{/toCompanyNewsAdd(staff_id=${session.STAFF_SESSION.staff_id}) }" target="main" class="cks">发布新公司资讯</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/platform/coin111.png" /><img class="coin22" src="img/platform/coin222.png" />
+						<a th:href="@{/toMarketsNewsAdd(staff_id=${session.STAFF_SESSION.staff_id}) }" target="main" class="cks">发布新市场资讯</a><img class="icon5" src="img/platform/coin21.png" />
+				</dd>
+				
+			</dl>
+			<dl class="system_log">
+			<dt>
+					<img class="icon1" src="img/platform/coin07.png" /><img class="icon2" src="img/platform/coin08.png" /> 其他<img class="icon3" src="img/platform/coin19.png" /><img class="icon4" src="img/platform/coin20.png" />
+				</dt>
+				<dd>
+					<!-- <a th:href="@{/ }" target="_self" class="cks">测试用</a> -->
+				</dd>
+			</dl>
+		</div>
+
+	</div>
+</body>
+<script type="javascript">
+	checkManager()
+	{
+		
+	}
+</script>
+</html>

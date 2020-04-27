@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>个人中心</title>
+<link type="text/css" href="css/main/base.css" rel="stylesheet" />
+<link type="text/css" href="css/main/Contact.css" rel="stylesheet" />
+</head>
+
+<body>
+<!--顶部-->
+<div class="top">
+    <b><img src="img/main/logo.jpg" /></b> 
+    <ul>
+         <li>
+              <a th:href="@{/staff_sign_in(staff_id=${session.STAFF_SESSION.staff_id})}">上班卡</a>
+              <div class="line2"></div>
+              <a th:href="@{/staff_sign_off(staff_id=${session.STAFF_SESSION.staff_id})}">下班卡</a>
+              <div class="line2"></div>
+              <a th:href="@{/toask_outside_office }">外勤</a>
+              <div class="line2"></div>
+              <a th:href="@{/logout }">登出</a>    
+          </li>
+       </ul>     
+</div>
+<!--banner-->
+<div class="banner">
+    <img src="img/main/news_bg.jpg" />
+
+</div>
+<!--导航-->
+<div class="nav">
+    <ul>
+        <li>
+           <a th:href="@{/toMain }" class="English"> 首页</a>
+        </li>
+        <li>
+           <a th:href="@{/toPlatform  }" class="English">进入平台</a>
+        </li>
+        <li>
+           <a th:href="@{/showAllCompanyNews }" class="English">公司资讯</a>
+        </li>
+        <li>
+           <a th:href="@{/showAllCompanyNews }" class="English">市场资讯</a>
+        </li>
+        <li>
+           <a th:href="@{/toSearchLinkage }" class="English">一二手联动</a>
+        </li> 
+         <li>
+           <a th:href="@{/toPersonal(staff_id=${session.STAFF_SESSION.staff_id}) }" class="English">个人中心</a>
+        </li>
+    </ul>
+</div>
+<!--当前位置-->
+<div class="Position">
+   <b><img src="img/main/icon4.gif" /></b>
+   <span>首页>></span>
+   <p>个人中心</p>
+ 
+      
+</div>
+
+<!--容器-->
+<div class="Container">
+
+     
+<!--产品信息左-->
+           <div class="Products_left">
+              <ul>
+              <p></p>
+              <li><img src="img/main/bg_news_left.gif" /></li>
+              </ul>      
+           </div>
+
+       
+<!--联络我们-->
+     <div class="Container_right">
+               <div class="Container_title">
+                       <b><img src="img/main/icon.gif" /></b>
+                       <p>个人中心</p>
+                       <span>Personal</span>
+               </div>
+               <div class="Contact_text">
+                       <b><img th:src="@{/img/staff_img/{img_name}(img_name=${session.STAFF_SESSION.staff_id}+${session.STAFF_SESSION.staff_username}+'.jpg')}" /></b>  
+                       <ul>
+                             <p>员工姓名:[[${session.STAFF_SESSION.staff_username}]]</p>
+                             <li>员工工号ID:[[${session.STAFF_SESSION.staff_id}]]</li>
+                             <li>职位:[[${session.STAFF_SESSION.staff_job}]]</li>
+                             <li>所在分行编号:[[${session.STAFF_SESSION.staff_branch_id}]]</li>
+                             <li>所在分行:[[${branch_name}]]</li>
+                             <li>上级领导:[[${superior_name}]]</li>
+                             <span><a th:href="@{/toChangePassword}">修改密码</a></span>
+                       </ul>  
+                       <div class="clear"></div>
+                       <p></p>
+                       <li></li>
+                       <li></li>
+                       <li></li>
+                       <li></li>
+               </div>
+               
+                
+           </div>
+</div>
+<!--底部--> 
+<div class="clear"></div>
+<div class="bottom">
+   <ul>
+       <li>
+           <a th:href="@{/toMain }" class="English"> 首页</a>
+        </li>
+        <li>
+           <a th:href="@{/toPlatform  }" class="English">进入平台</a>
+        </li>
+        <li>
+           <a th:href="@{/showAllCompanyNews }" class="English">公司资讯</a>
+        </li>
+        <li>
+           <a th:href="@{/showAllMarketsNews }" class="English">市场资讯</a>
+        </li>
+        <li>
+           <a th:href="@{/toSearchLinkage }" class="English">一二手联动</a>
+        </li> 
+         <li>
+           <a th:href="@{/toPersonal(staff_id=${session.STAFF_SESSION.staff_id}) }" class="English">个人中心</a>
+        </li>
+   </ul>
+        <p class="bottom_text">©2015 可可饮料有限公司  版权所有  地址：广州市天河路365号天俊阁1202  电话：020- 38812035<br />
+                        湘ICP备11005311号  更多模板：<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
+
+</div>
+</body>
+</html>

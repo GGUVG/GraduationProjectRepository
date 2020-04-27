@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>月查询卖房成交宗数</title>
+<link rel="stylesheet" type="text/css" href="css/platform/css.css" />
+<script type="text/javascript" src="js/platform/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="js/page.js" ></script> -->
+</head>
+
+<body>
+	<div id="pageAll">
+		<div class="pageTop">
+			<div class="page">
+				<img src="img/platform/coin02.png" /><span><a th:href="@{/toMain}">首页</a>&nbsp;-&nbsp;<a th:href="@{/toPlatform }">管理</a>&nbsp;-</span>&nbsp;月查询卖房成交宗数
+			</div>
+		</div>
+
+		<div class="page">
+			<!-- balance页面样式 -->
+			<div class="connoisseur">
+				<div class="conform">
+					<form th:action="@{/checkSale_monthSalary }">
+						<div class="cfD">
+						员工ID：<input id="staff_id" th:value="${session.STAFF_SESSION.staff_id}" name="staff_id"></input>
+						年份：<input th:id="year" th:name="year" th:value=${year}></input>
+							月份<select class="bselect" name="month">
+								<option>01</option>
+								<option>02</option>
+								<option>03</option>
+								<option>04</option>
+								<option>05</option>
+								<option>06</option>
+								<option>07</option>
+								<option>08</option>
+								<option>09</option>
+								<option>10</option>
+								<option>11</option>
+								<option>12</option>
+								</select>
+						</div>
+						<div class="cfD">
+							<input type="submit" value="check"></input>
+						</div>
+					</form>
+				</div>
+				<!-- bbalance 表格 显示 -->
+				<div class="conShow">
+					<table border="1" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="40px" class="tdColor tdC">房源ID</td>
+							<td width="80px" class="tdColor">房源小区</td>
+							<td width="100px" class="tdColor">成交价格/平</td>
+							<td width="100px" class="tdColor">面积/平</td>
+							<td width="80px" class="tdColor">佣金点</td>
+							<td width="100px" class="tdColor">佣金金额</td>
+							<td width="100px" class="tdColor">成交时间</td>
+							<td width="100px" class="tdColor">房屋类型</td>
+							<td width="150px" class="tdColor">买家ID</td>
+							<td width="80px" class="tdColor">卖家ID</td>
+						</tr>
+						<tr  th:each="listCheckSale_monthSalary:${listCheckSale_monthSalary}">
+							<td th:text="${listCheckSale_monthSalary.House_sid}"></td>
+							<td th:text="${listCheckSale_monthSalary.House_sestate}"></td>
+							<td th:text="${listCheckSale_monthSalary.House_sprice}"></td>
+							<td th:text="${listCheckSale_monthSalary.House_ssquare}"></td>
+							<td th:text="${listCheckSale_monthSalary.estate_commission}"></td>
+							<td th:text="${listCheckSale_monthSalary.House_sprice*listCheckSale_monthSalary.House_ssquare*listCheckSale_monthSalary.estate_commission }"></td>
+							<td th:text="${listCheckSale_monthSalary.deal_time}"></td>
+							<td th:switch="${listCheckSale_monthSalary.estate_type}"><p th:case="'0'">一手</p><p th:case="'1'">二手</p></td>
+							<td th:text="${listCheckSale_monthSalary.House_sclientid}"></td>
+							<td th:text="${listCheckSale_monthSalary.House_spurchaser_id}"></td>
+						</tr>
+					</table>
+					<div class="paging" th:if="${listCheckSale_monthSalaryPage}" >
+					<a th:href="@{/checkSale_monthSalary(start=0,staff_id=${session.STAFF_SESSION.staff_id})}">[首  页]</a>
+           			<a th:href="@{/checkSale_monthSalary(start=${listCheckSale_monthSalaryPage.pageNum-1},staff_id=${session.STAFF_SESSION.staff_id},year=${year},month=${month})}">[上一页]</a>
+            		<a th:href="@{/checkSale_monthSalary(start=${listCheckSale_monthSalaryPage.pageNum+1},staff_id=${session.STAFF_SESSION.staff_id},year=${year},month=${month})}">[下一页]</a>
+           		    <a th:href="@{/checkSale_monthSalary(start=${listCheckSale_monthSalaryPage.pages},staff_id=${session.STAFF_SESSION.staff_id},year=${year},month=${month})}">[末  页]</a>
+					</div>
+				</div>
+				<!-- balance 表格 显示 end-->
+			</div>
+			<!-- balance页面样式end -->
+		</div>
+
+	</div>
+
+</body>
+<script>
+   $(function(){
+	  $("#year").on('input',function(value){
+		    console.log("实时监听:"+$(this).val());
+		    var regular = /^[0-9]\d*$/;
+		    var length=document.getElementById("year").value.length;
+		    if(regular.test($(this).val()))
+		    {
+		    	console.log("输入长度:"+length);
+		    	if( length < 5)
+		    	{
+		    	$(this).val($(this).val());
+		    	}
+		    	else
+		    		{
+		    		alert("超长");
+		    		}
+		    }
+		    else
+		    {
+		    	alert("输入数字");
+		    }
+		    
+	   })  
+    })
+ </script>
+</html>

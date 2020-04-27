@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>发布新市场资讯</title>
+<link rel="stylesheet" type="text/css" href="css/platform/css.css" />
+<script type="text/javascript" src="js/platform/jquery.min.js"></script>
+</head>
+<body>
+	<div id="pageAll">
+		<div class="pageTop">
+			<div class="page">
+				<img src="img/platform/coin02.png" /><span><a th:href="@{/toMain}">首页</a>&nbsp;-&nbsp;<a th:href="@{/toPlatform}">平台</a>&nbsp;-</span>&nbsp;资讯发布
+			</div>
+		</div>
+		<div class="page ">
+			<!-- 上传广告页面样式 -->
+			<div class="banneradd bor">
+				<div class="baTopNo">
+					<span>公司资讯编辑</span>
+				</div>
+				<form th:action="@{/CompanyNewsAdd}" method="post" enctype="multipart/form-data">
+				<div class="baBody">
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当前员工头像：
+						<div class="vipHead vipHead1">
+							<img th:src="@{/img/staff_img/{img_name}(img_name=${session.STAFF_SESSION.staff_id}+${session.STAFF_SESSION.staff_username}+'.jpg')}" />
+							<p class="vipP">[[${session.STAFF_SESSION.staff_username}]]</p>
+							
+						</div>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;资讯标题：<input type="text" sclass="input3" name="Company_news_title1"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;资讯内容：
+						<div class="btext2">
+							<textarea class="text2" name="Company_news_content1"></textarea>
+						</div>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作者工号：<input th:value="${session.STAFF_SESSION.staff_id}" name="Company_news_staffid1" readonly="readonly"/>
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;添加图片：<input type="file" name="Company_news_img1"/>
+					</div>
+					<div class="bbD">
+						<p class="bbDP">
+							<input type="submit" value="提交"></input>
+						</p>
+					</div>
+				</div>
+				</form>
+			</div>
+
+			<!-- 上传广告页面样式end -->
+		</div>
+	</div>
+</body>
+</html>

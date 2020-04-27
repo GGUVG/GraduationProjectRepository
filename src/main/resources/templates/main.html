@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>首页</title>
+<script type="text/javascript" src="js/main/jquery-1.8.3.min.js"></script>
+<link href="css/main/index.css" rel="stylesheet" type="text/css"/>
+<link href="css/main/base.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+
+<!--顶部-->
+<div class="top">
+    <b><img src="img/main/logo.jpg" /></b> 
+    <ul>
+          <li>
+          	  
+              <a th:href="@{/staff_sign_in(staff_id=${session.STAFF_SESSION.staff_id})}">上班卡</a>
+              <div class="line2"></div>
+              <a th:href="@{/staff_sign_off(staff_id=${session.STAFF_SESSION.staff_id})}">下班卡</a>
+              <div class="line2"></div>
+              <a th:href="@{/toask_outside_office }">外勤</a>
+              <div class="line2"></div>
+              <a th:href="@{/logout }">登出</a>
+              
+          </li>
+       </ul>     
+</div>
+
+<!--banner-->
+<div class="banner">
+    <img src="img/main/bg3.gif" />
+</div>
+ <!--整体容器-->
+ <div class="Container">
+ <!--导航-->
+<div class="nav">
+    <ul>
+        <li>
+           <a th:href="@{/toMain }" class="English"> 首页</a>
+        </li>
+        <li>
+           <a th:href="@{/toPlatform  }" class="English">进入平台</a>
+        </li>
+        <li>
+           <a th:href="@{/showAllCompanyNews }" class="English">公司资讯</a>
+        </li>
+        <li>
+           <a th:href="@{/showAllMarketsNews }" class="English">市场资讯</a>
+        </li>
+        <li>
+           <a th:href="@{/toSearchLinkage }" class="English">一二手联动</a>
+        </li> 
+         <li>
+           <a th:href="@{/toPersonal(staff_id=${session.STAFF_SESSION.staff_id}) }" class="English">个人中心</a>
+        </li>
+    </ul>
+</div>
+ <!--公司简介-->
+       <ul class="summary_title">
+           <b><img src="img/main/icon.gif" /></b>
+           <p>公司简介</p>
+           <span>COMPANY INTRODUCTION</span>
+       </ul>
+             
+    <div class="summary">
+            <b><img src="img/main/p3.gif" /></b>
+            <ul>
+               <p><span>完平置业有限公司</span>主要提供房屋买卖交易信息、房屋出租等服务...</p>
+            
+            </ul>               
+   </div>
+   
+   
+   
+   
+    <div class="Box">
+<!--最新消息-->
+        <div class="news">
+                 <div class="news_title">     
+                         <b><img src="img/main/icon2.gif" /></b>    
+                         <span>最新公司资讯</span>
+                         <a>NEWS</a>        
+                 </div>              
+                 <div class="news_text2">
+                 <ul th:each="showNews:${showNews}">
+                 	<li><td><a th:href="@{/newsDetails(Company_news_id=${showNews.Company_news_id})}" th:text="${showNews.Company_news_title}"></a></td></li>
+                 	<li th:text="${showNews.publish_time}"></li>
+                 </ul>               
+                 </div>
+        </div>
+<!--联络我们-->
+         <div class="Contact">
+        
+              <div class="news_title">     
+                                 <b><img src="img/main/icon2.gif" /></b>   
+                                 <span>最新市场资讯</span>             
+              </div>
+              <div class="news_text2">
+                     <ul th:each="showMarket5News:${showMarket5News}">
+                        <li>
+                            <b><img src="img/main/Point.gif" /></b>
+                            <a th:href="@{/showMarketsNewsDetails(Markets_news_id=${showMarket5News.Markets_news_id})}">1<span>[[${showMarket5News.Markets_news_title}]]</span></a>
+                            <b><img src="img/main/Point.gif" /></b>
+                         </li>
+                     </ul>               
+                 </div>
+        </div>
+    </div>
+ <!--产品信息--> 
+   
+      <ul class="summary_title">
+           <b><img src="img/main/icon.gif" /></b>
+           <p>完平网站</p>
+           <span>WanPing Website</span>
+           <li><a href="#">MORE>></a></li>
+       </ul>   
+       
+       
+    
+       <div class="product">
+         
+             <div class="phtot_middle1">
+           
+                  <div class=""> 
+                           <ul>
+                            <li><img src="img/main/bgb1.gif"/></li>    
+                           </ul>
+                           <ul class="piclist swaplist"></ul>
+                  </div> 
+                  	<div class="og_prev"></div>
+                  	<div class="og_next"></div>    
+             </div>
+      </div>
+ </div> 
+
+</div>
+
+
+
+  <!--底部--> 
+<div class="clear"></div>
+<div class="bottom">
+   <ul>
+       <li>
+           <a th:href="@{/toMain }" class="English"> 首页</a>
+        </li>
+        <li>
+           <a th:href="@{/toPlatform  }" class="English">进入平台</a>
+        </li>
+        <li>
+           <a th:href="@{/showAllCompanyNews }" class="English">公司资讯</a>
+        </li>
+        <li>
+           <a th:href="@{/showAllMarketsNews }" class="English">市场资讯</a>
+        </li>
+        <li>
+           <a th:href="@{/toSearchLinkage }" class="English">一二手联动</a>
+        </li> 
+         <li>
+           <a th:href="@{/toPersonal(staff_id=${session.STAFF_SESSION.staff_id}) }" class="English">个人中心</a>
+        </li>
+   </ul>
+        <p class="bottom_text">©2016 完平置业有限公司  地址：广州市番禺区洛溪天域网咖  电话：020- 66666666<br />
+
+</div>
+
+
+
+
+
+</body>
+<script th:inline="javascript">    
+let name = [[${session.STAFF_SESSION.staff_username}]] + ', welcome';   
+alert(name); 
+</script>
+</html>

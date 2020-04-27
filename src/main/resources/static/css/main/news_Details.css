@@ -1,0 +1,44 @@
+@charset "utf-8";
+/* CSS Document */
+/*banner*/
+.banner{ width:100%; height:267px; overflow:hidden; text-align:center;}
+
+/*当前位置*/
+.Position{ width:1000px; height:20px; margin:20px auto;}
+.Position b{ float:left;}
+.Position span{ float:left; font:13px "微软雅黑"; color:#000000;}
+.Position p{ float:left; margin-left:15px; font:13px "微软雅黑"; color:#000000;}
+
+/*容器*/
+.Container{ width:1000px; height:931px; margin:auto; }
+.Container_left{ width:262px; height:930px; float:left;}
+/*产品信息左*/
+.Products_left{ width:100%; height:620px; position:relative;}
+.Products_left ul{ width:260px; height:590px; border:1px solid #dadada;}
+.Products_left ul p{ width:100%; height:50px; background:#000000; color:#FFF;font:18px "微软雅黑"; line-height:49px; text-align:center;}
+.Products_left ul li{ background:url(../images/p7.gif) no-repeat; width:200px; height:151px; margin:17px 28px; position:relative;}
+.Products_left ul li span{ width:100%; height:25px; text-align:center; line-height:24px; position:absolute; bottom:0px;}
+.Products_left  a{ width:225px;outline:none; display:block; color:#F00; font:10px Arial; height:17px;  position:absolute; top:565px; text-align:right;}
+/*联络我们左*/
+.Contact_left{ width:247px; height:308px; background:url(../images/bg_Contact%20.gif) no-repeat; padding-left:15px;} 
+.news_title{ width:200px; height:33px; }
+.news_title a{ color:#7b7b7b;}
+.news_title span{font:15px "微软雅黑"; color:#101010; }
+.news_title ul{font:12px Arial; color:#707070; }
+.Contact_text li{ height:33px; line-height:32px; color:#3a3a3a;}
+.Contact_text ul{ margin-left:31px; margin-top:9px; *margin-left:16px; position:relative;}
+.Contact_text ul a{ position:absolute; left:12px; top:3px; color:#FFF; font:13px "微软雅黑";}
+
+/*最新消息右*/
+.Container_right{ width:710px; height:800px; border:1px solid #dadada; float:right;}
+.Container_title{ width:625px; height:35px; padding-top:21px;border-bottom:2px solid #dbdbdb; margin-left:15px;}
+.Container_title b{ float:left;}
+.Container_title p{ float:left; font:15px "微软雅黑"; color:#161616; margin-right:8px;}
+.Container_title span{float:left; font:12px Arial; color:#707070; margin-top:4px;}
+.news_text{ width:590px; height:650px; margin:auto; }
+/*font-weight:normal;不加粗*/
+.news_text p{ font:13px "微软雅黑"; color:#F00; width:100%; text-align:center; height:25px; margin-top:15px;}
+.news_text b{height:250px; margin-left:130px;}
+.news_text ul{ width:100%; height:40px; color:#454545; text-align:center;}
+.news_text li{ color:#454545; line-height:28px; text-indent:2em; margin-top:20px;}
+.news_text li span{ color:#F00;}
