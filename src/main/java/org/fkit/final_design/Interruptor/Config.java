@@ -8,6 +8,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class Config extends WebMvcConfigurerAdapter {
     public void addInterceptors(InterceptorRegistry registry)
     {
-        registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**").excludePathPatterns("/index","/login");
+        registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**").excludePathPatterns("/index","/login","/css/**","/js/**","/img/**");
     }
 }
